@@ -21,3 +21,18 @@ while(l<=r):
             water_trapped+=right_largest-buildings[r]
             r-=1
 print(water_trapped)
+
+
+# Another way is to explicitly calculate left_largrst and right_largest with each iteration
+
+while(l<=r):
+    left_largest=max(left_largest,buildings[l])
+    right_largest=max(right_largest,buildings[r])
+    
+    if left_largest<right_largest:
+        water_trapped+=left_largest-buildings[l]
+        l+=1
+    else:
+        water_trapped+=right_largest-buildings[r]
+        r-=1
+print(water_trapped)
