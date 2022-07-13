@@ -30,5 +30,25 @@ print(kthElement(arr,0,len(arr)-1,k-1))
 
 
 # direct/brute
+def partition(arr,k):
+     arr.sort()
+     return(arr[k-1])
+arr=[7 ,10 ,4 ,20, 15]
+k=4
+print(kthElement(arr,k-1))
+
+
+# using hwapify
+
+def partition(arr,k):
+    heapq.heapify(arr)
+    while k>0:
+        r = heapq.heappop(arr)
+        k-=1
+    return r
+
+arr=[7 ,10 ,4 ,20, 15]
+k=4
+print(kthElement(arr,k-1))
 
 
