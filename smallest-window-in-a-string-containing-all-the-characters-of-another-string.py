@@ -41,6 +41,8 @@ def smallestWindow(s,p):
             f2=True
         if f1==False and f2==False:
             break
+        if len(ans)==0:
+            return -1
     return ans
 
 
