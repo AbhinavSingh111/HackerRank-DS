@@ -1,4 +1,3 @@
-from collections import defaultdict
 def smallestWindow(s,p):
     dicp = {}
     dics = {}
