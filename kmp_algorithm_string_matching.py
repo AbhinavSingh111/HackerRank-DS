@@ -23,11 +23,16 @@ def kmp(haystack , needle):
         if haystack[i]==needle[j]:
             i+=1
             j+=1
-        elif j==0:
-            i+=1
         else:
-            j = lps[j-1]
-    return i-ln
+            if j==0:
+                i+=1
+            else:
+                j = lps[j-1]
+        if j==ln:
+            return i-ln
+    return -1
 needle = "aaaa"
 haystack = "aaacaaaa"
 print(kmp(haystack,needle))
+
+# code is also present in leetcode 28 submission and vs
