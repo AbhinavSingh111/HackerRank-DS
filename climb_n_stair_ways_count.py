@@ -39,9 +39,29 @@ def climbStairs3(n,path):
 n=4
 print(climbStairs3(n,""))
 
+# this approach uses faith recursion to count the total number of paths amd memoisation
 
+def climbStairs4(n,bank):
+    if n==0:
+        return 1
+    elif n<0:
+        return 0
+    elif bank[n]!=0:
+        return bank[n]
+    else:
+        p1=climbStairs4(n-1,bank)
+        p2=climbStairs4(n-2,bank)
+        p3=climbStairs4(n-3,bank)
+        tot=p1+p2+p3
+        bank[n]=tot
+    return tot
+        
 
-# the next approach to count the number of paths is based on  the iterative approach
+n=10
+bank=[0]*(n+1)
+print(climbStairs4(n,bank))
+
+# the next approach to count the number of paths is based on  the iterative approach using 1d tabular dp
 def climbStairs5(i):
     l=[0]*(i+1)
     l[0]=1
