@@ -1,3 +1,5 @@
+# this approach follows faith and expectation recursion
+# this solves topdown
 def climbStairs(n):
     if n==0:
         return [""]
@@ -15,7 +17,28 @@ def climbStairs(n):
 n=35
 print(climbStairs(n))
 
-#  the above approach gives the paths , and also it is TLE
+#  the above approach gives the paths , and also it is TLE when used for large numbers ,
+# can be optimised using memoisation as multiple subproblems are being solved multiple times
+
+
+#  this approach follows lvel adoption approach , goes from bottome to top,\
+# base case gives answer
+# print path
+
+
+def climbStairs3(n,path):
+    if n==0:
+        print(path,end=" ")
+        return
+    elif n<0:
+        return
+    else:
+        climbStairs3(n-1,'1'+path)
+        climbStairs3(n-2,'2'+path)
+        # climbStairs3(n-3,'3'+path)
+n=4
+print(climbStairs3(n,""))
+
 
 # the next step to count the number of paths is based on fibonacci approach
 def climbStairs(n):
