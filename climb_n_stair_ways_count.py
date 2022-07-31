@@ -40,6 +40,23 @@ n=4
 print(climbStairs3(n,""))
 
 
+
+# the next approach to count the number of paths is based on  the iterative approach
+def climbStairs5(i):
+    l=[0]*(i+1)
+    l[0]=1
+    for n in range(1,i+1):
+        if n==1:
+            l[n]=l[n-1]
+        elif n==2:
+            l[n]=l[n-1]+l[n-2]
+        else:
+            l[n]=l[n-1]+l[n-2]+l[n-3]
+    return l[n]
+n=10
+print(climbStairs5(n))
+
+
 # the next step to count the number of paths is based on fibonacci approach
 def climbStairs(n):
     if n==0:
