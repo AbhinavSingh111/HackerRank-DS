@@ -13,3 +13,20 @@ def bin_count(n):
 
 n=7
 print(bin_count(n))
+
+
+
+# approach 2 using 4 variables
+def bin_count(n):
+    zeroes = 1
+    ones = 1
+    for i in range(2,n+1):
+        new_ones = zeroes+ones
+        new_zeroes =ones
+        zeroes = new_zeroes
+        ones = new_ones
+    return zeroes+ones
+ 
+
+n=7
+print(bin_count(n))
