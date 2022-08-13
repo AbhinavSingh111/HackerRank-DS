@@ -25,3 +25,27 @@ def maxProfit(k, prices) :
 prices= [3,2,6,5,0,3]
 k=2
 print(maxProfit(k,prices))
+
+
+
+# approach 2
+# it has n^3 complexity
+def maxProfit(k, prices) :
+    dp = [[0 for i in range(len(prices))] for i in range(k+1)]
+    for t in range(1,k+1):
+        for d in range(1,len(prices)): #will run for all prices
+            m = dp[t][d-1] # m is being initialised with a value which means if the particular transactions have been completed a day before today
+            for p in range(d): # also we take into account all the n-1 transactions + the nth transactions possible and then take the max value out of them as answer and place it in dp[t][d]
+                pt = dp[t-1][p]+(prices[d]-prices[p])
+                if pt>m:
+                    m=pt
+            dp[t][d]=m
+    return dp[k][len(prices)-1]
+
+
+
+
+
+prices= [3,2,6,5,0,3]
+k=2
+print(maxProfit(k,prices))
