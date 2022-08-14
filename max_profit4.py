@@ -49,3 +49,30 @@ def maxProfit(k, prices) :
 prices= [3,2,6,5,0,3]
 k=2
 print(maxProfit(k,prices))
+
+
+# approach 3
+# it has n^2 complexity
+# here we store the max values in 2nd loop only so no need to run 3rd loop
+def maxProfit(k, prices) :
+    dp = [[0 for i in range(len(prices))] for i in range(k+1)]
+    for t in range(1,k+1):
+        m = -999999
+        for d in range(1,len(prices)): #will run for all prices // dp[t][d] = max(dp[t][d-1]vs
+            # max(dp[t-1][d-1]-prices[d-1])+prices[d])
+            if dp[t-1][d-1]-prices[d-1]>m:
+                m=dp[t-1][d-1]-prices[d-1]
+            if m+prices[d]>dp[t][d-1]:
+                dp[t][d]=m+prices[d]
+            else:
+                dp[t][d]=dp[t][d-1]
+
+    return dp[k][len(prices)-1]
+
+
+
+
+
+prices= [3,2,6,5,0,3]
+k=2
+print(maxProfit(k,prices))
