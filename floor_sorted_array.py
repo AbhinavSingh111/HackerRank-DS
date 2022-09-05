@@ -1,6 +1,6 @@
 # find the floor of an element in a sorted array
 # if the same element is present , return it
-# if not , then return the greatest element smaller then it(ie element given)
+# if not , then return the greatest element smaller then it( element given)
 
 def floor(arr,ele):
     s = 0
