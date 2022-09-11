@@ -1,6 +1,6 @@
 # find the ceil of an element in a sorted array
 # if the same element is present , return it
-# if not , then return the smallest element grater  than it(ie element given)
+# if not , then return the smallest element grater  than it( element given)
 
 def ceil(arr,ele):
     s = 0
