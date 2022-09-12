@@ -39,7 +39,7 @@ def climbStairs3(n,path):
 n=4
 print(climbStairs3(n,""))
 
-# this approach uses faith recursion to count the total number of paths amd memoisation
+# this approach uses faith recursion to count the total number of paths amd memoization
 
 def climbStairs4(n,bank):
     if n==0:
