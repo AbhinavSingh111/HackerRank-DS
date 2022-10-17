@@ -40,3 +40,22 @@ def mcm(arr , i , j):
 arr = [10,30,5,60]
 print(mcm(arr , 1 , len(arr)-1))
 
+
+# approach 2  , memoization
+dp = [[-1 for i in range(10002)]for j in range(10002)]
+def mcm(arr , i , j):
+    if i>=j:
+        return 0
+    if dp[i][j]!=-1:
+        return dp[i][j]
+    ans = 9999999
+    for k in range(i,j):
+        temp_ans = mcm(arr , i , k) + mcm(arr , k+1 , j) + (arr[i-1]*arr[k]*arr[j])
+        if temp_ans<ans:
+            ans = temp_ans
+    dp[i][j] = ans
+    return ans
+
+arr = [10,30,5,60]
+print(mcm(arr , 1 , len(arr)-1))
+
