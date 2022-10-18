@@ -26,3 +26,21 @@ def palindromic_partitioning_recursive(str , i , j):
 
 str = "momos"
 print(palindromic_partitioning_recursive(str , 0 , len(str)-1))
+
+
+# memoized version
+dp = [[-1 for i in range(502)]for j in range(502)] #change as per i , j constraints
+def palindromic_partitioning_memoized(str , i , j):
+    if i>=j:
+        return 0
+    if is_palindrome(str[i:j+1]): #if a string is already palindrome we do not need any partition
+        return 0
+    if dp[i][j]!=-1:
+        return dp[i][j]
+    ans = 9999999
+    for k in range(i,j): #i to j-1
+        temp_ans = 1 + palindromic_partitioning_memoized(str , i,k) + palindromic_partitioning_memoized(str , k+1,j)
+        if temp_ans<ans:
+            ans = temp_ans
+    dp[i][j] = ans
+    return ans
