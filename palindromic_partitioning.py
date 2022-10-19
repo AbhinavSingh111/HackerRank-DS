@@ -44,3 +44,35 @@ def palindromic_partitioning_memoized(str , i , j):
             ans = temp_ans
     dp[i][j] = ans
     return ans
+
+# optimized version of memoization
+dp = [[-1 for i in range(502)]for j in range(502)] #change as per i , j constraints
+def palindromic_partitioning_memoized_op(str , i , j):
+    if i>=j:
+        return 0
+    if is_palindrome(str[i:j+1]): #if a string is already palindrome we do not need any partition
+        return 0
+    if dp[i][j]!=-1:
+        return dp[i][j]
+    ans = 9999999
+    for k in range(i,j): #i to j-1
+        if dp[i][k]!=-1:
+            left = dp[i][k]
+        else:
+            left = palindromic_partitioning_memoized_op(str , i,k)
+            dp[i][k] = left
+        if dp[k+1][j]!=-1:
+            right = dp[k+1][j]
+        else:
+            right = palindromic_partitioning_memoized_op(str , k+1,j)
+            dp[k+1][j] = right
+
+        temp_ans = 1 + left + right
+        if temp_ans<ans:
+            ans = temp_ans
+    dp[i][j] = ans
+    return ans
+
+
+str = "momos"
+print(palindromic_partitioning_memoized_op(str , 0 , len(str)-1))
