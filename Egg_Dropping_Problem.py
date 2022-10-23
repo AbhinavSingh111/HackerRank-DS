@@ -34,3 +34,25 @@ def egg_dropping_recursive(e  , f):
 f = 4
 e = 2
 print(egg_dropping_recursive(e , f))
+
+
+# memoized version
+dp = [[-1 for i in range(51)] for j in range(51)] #e is number of rows and j is number of columns
+def egg_dropping_recursive_memoized(e  , f):
+    if e==1:
+        return f
+    if f==1 or f ==0:
+        return f
+    if dp[e][f]!=-1:
+        return dp[e][f]
+    ans = 9999999
+    for k in range(1, f):
+        temp = 1 + max(egg_dropping_recursive_memoized(e-1 , k-1) , egg_dropping_recursive_memoized(e , f-k))
+        ans = min(ans , temp)
+        dp[e][f] = ans
+    return dp[e][f]
+
+
+f = 4
+e = 2
+print(egg_dropping_recursive_memoized(e , f))
