@@ -56,3 +56,6 @@ def egg_dropping_recursive_memoized(e  , f):
 f = 4
 e = 2
 print(egg_dropping_recursive_memoized(e , f))
+
+
+#memoized optimized
