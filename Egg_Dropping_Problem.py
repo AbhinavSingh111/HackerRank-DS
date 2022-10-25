@@ -58,5 +58,33 @@ e = 2
 print(egg_dropping_recursive_memoized(e , f))
 
 
-#memoized optimized
-#
+# memoized version optimized
+dp = [[-1 for i in range(51)] for j in range(51)] #e is number of rows and j is number of columns
+def egg_dropping_recursive_memoized(e  , f):
+    if e==1:
+        return f
+    if f==1 or f ==0:
+        return f
+    if dp[e][f]!=-1:
+        return dp[e][f]
+    ans = 9999999
+    for k in range(1, f):
+        if dp[e-1][k-1]!=-1:
+            broke = dp[e-1][k-1]
+        else:
+            broke = egg_dropping_recursive_memoized(e-1 , k-1)
+            dp[e-1][k-1] = broke
+        if dp[e][f-k]!=-1:
+            not_broke = dp[e][f-k]
+        else:
+            not_broke = egg_dropping_recursive_memoized(e , f-k)
+            dp[e][f-k] = not_broke
+        temp = 1 + max(broke, not_broke)
+        ans = min(ans , temp)
+        dp[e][f] = ans
+    return dp[e][f]
+
+
+f = 4
+e = 2
+print(egg_dropping_recursive_memoized(e , f))
