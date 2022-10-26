@@ -23,22 +23,22 @@
 
 def nextLargerElement(arr,n):
     #code here
-    stack = []
-    vector = []
-    for i in range(n-1 , -1 , -1):
-        if len(stack)==0:
+    stack = []  # as we will traverse array in reverse we keep pushing elements in stack
+    vector = [] # if the element in stack is greater than current arr ele , then we push stack ele to vector 
+    for i in range(n-1 , -1 , -1): #here we start from last and go till 0th element
+        if len(stack)==0: # if the length of stack is 0 then as per question -1 gets in vector list(answer list/array)
             vector.append(-1)
-        elif len(stack)>0 and arr[i]<stack[-1]:
+        elif len(stack)>0 and arr[i]<stack[-1]: #if the element in stack is greater than current arr ele , then we push stack ele to vector 
             vector.append(stack[-1])
-        elif len(stack)>0 and arr[i]>=stack[-1]:
+        elif len(stack)>0 and arr[i]>=stack[-1]: # if the element in stack is smaller or equal to the current arr ele , then we pop the top stack ele , till if stack goes empty or we find the ele in stack greater than current arr ele
             while len(stack)>0 and arr[i]>=stack[-1]:
                 stack.pop()
-            if len(stack)==0:
+            if len(stack)==0:# if while popping stack goes empty we put -1 in vector
                 vector.append(-1)
             else:
-                vector.append(stack[-1])
-        stack.append(arr[i])
-    return vector[::-1]
+                vector.append(stack[-1]) #if while popping we find ele in stack greater than current arr ele ,  we put that stack ele in vector
+        stack.append(arr[i]) # after doing all that we always push current arr ele to stack top
+    return vector[::-1] # reverse the vecto as we are traversing array from back 
 
 arr = [1,3,2,4]
 print(nextLargerElement(arr , len(arr)))
