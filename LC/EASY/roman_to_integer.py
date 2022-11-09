@@ -20,6 +20,6 @@ def romanToInt( s):
             i+=2
     return ans
 
-s="MCMXCIV"
+s="MCMXCIII"
 print(romanToInt(s))
                 
