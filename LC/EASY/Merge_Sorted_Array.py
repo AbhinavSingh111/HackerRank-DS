@@ -11,3 +11,7 @@
                 nums1.pop(i)
         nums1+=nums2
         nums1.sort()
+       #      approach2 : replacing extra 0 in nums1 with the nums2 elements and then sorting using sort func
+        for i in range(0,n):
+            nums1[i+m]=nums2[i]
+        nums1.sort()
