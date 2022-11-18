@@ -13,3 +13,5 @@
         return i
 #APPROACH 2        
 #         since the majority element will be present in more than half of the length , we can simply sort and return the middle element
+        nums.sort() 
+        return(nums[len(nums)//2])
