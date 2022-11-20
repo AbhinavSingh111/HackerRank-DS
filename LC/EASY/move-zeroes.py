@@ -14,3 +14,11 @@ class Solution:
                 nums.remove(0)
             for i in range(dic[0]): #THEN APPEND THE NUMBER OF 0 PRESENT INITIALLY AT THE END
                 nums.append(0)
+                
+another approach 2 pointers
+def moveZeroes(self, nums):
+    zero = 0  # records the position of "0"
+    for i in xrange(len(nums)):
+        if nums[i] != 0:
+            nums[i], nums[zero] = nums[zero], nums[i]
+            zero += 1
