@@ -15,3 +15,14 @@ class Solution:
         
         # handles overflow
         return (a & mask) if b > 0 else a
+    
+    Using logarithm and exponential function
+    
+    import math
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        if a==0:
+            return b
+        if b==0:
+            return a
+        return int(math.log(exp(a)*exp(b)))
