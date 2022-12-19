@@ -21,4 +21,23 @@ class Solution:
                     count+=1
                     temp+=1
         return answer
-        
+2 . USING STACK
+
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        s = []
+        v = []
+        for i in range(len(temperatures)-1,-1,-1):
+            if len(s)==0:
+                v.append(0)
+            elif len(s)>0 and temperatures[i]<s[-1]:
+                v.append(abs(temperatures.index(s[-1])-i))
+            elif len(s)>0 and temperatures[i]>s[-1]:
+                while len(s)>0 and temperatures[i]>s[-1]:
+                    s.pop()
+                if len(s)==0:
+                    v.append(0)
+                else:
+                    v.append(abs(temperatures.index(s[-1])-i))
+            s.append(temperatures[i])
+        return reversed(v)
