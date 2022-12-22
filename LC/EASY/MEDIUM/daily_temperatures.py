@@ -1,4 +1,5 @@
-
+https://leetcode.com/problems/daily-temperatures/description/
+739. Daily Temperatures   
 
 problem similar to next greater element and can be optimized by using stack
 1 .Brute force TLE
