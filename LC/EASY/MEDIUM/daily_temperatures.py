@@ -22,22 +22,24 @@ class Solution:
                     temp+=1
         return answer
 2 . USING STACK
-
+# we are using the approach to find next greater element just putting indexes in place of element in result stack
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    def dailyTemperatures(self, t: List[int]) -> List[int]:
         s = []
         v = []
-        for i in range(len(temperatures)-1,-1,-1):
+        for i in range(len(t)-1,-1,-1):
             if len(s)==0:
                 v.append(0)
-            elif len(s)>0 and temperatures[i]<s[-1]:
-                v.append(abs(temperatures.index(s[-1])-i))
-            elif len(s)>0 and temperatures[i]>s[-1]:
-                while len(s)>0 and temperatures[i]>s[-1]:
+            elif len(s)>0 and t[s[-1]]>t[i]:
+                v.append(s[-1]-i)
+            elif len(s)>0 and t[s[-1]]<=t[i]:
+                while len(s)>0 and t[s[-1]]<=t[i]:
                     s.pop()
                 if len(s)==0:
                     v.append(0)
                 else:
-                    v.append(abs(temperatures.index(s[-1])-i))
-            s.append(temperatures[i])
+                    v.append(s[-1]-i)
+            s.append(i)
+
         return reversed(v)
+    
