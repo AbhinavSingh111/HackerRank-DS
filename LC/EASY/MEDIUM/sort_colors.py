@@ -2,7 +2,7 @@ https://leetcode.com/problems/sort-colors/description/
 75. Sort Colors
 
 
-# not in place using stacks
+# not in place using stacks , self thought
 class Solution:
     def sortColors(self, nums: List[int]) -> None:
         ph = []
