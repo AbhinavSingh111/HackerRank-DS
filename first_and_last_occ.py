@@ -75,7 +75,26 @@ class Solution:
         ans[1]=j
         return ans
     
-    
-    approach 3 , for loop traversal O(n)
+approach 3 , for loop traversal O(n)
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        first_occ=-1
+        last_occ=0
+        for i in range(len(nums)):
+            if nums[i]<target:
+                continue
+            if nums[i] == target:
+                if first_occ==-1:
+                    first_occ=i
+                    last_occ=i
+                else:
+                    last_occ=i
+            if nums[i]>target:
+                break
+        if first_occ==-1:
+            last_occ=-1
+        return [first_occ , last_occ]
+
     
     
