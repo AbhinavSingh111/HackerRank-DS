@@ -42,3 +42,40 @@ def fnlocc(array , ele):
 array = [4,10,10,10,10,18,20]
 ele = 10
 print(fnlocc(array,ele))
+
+
+
+approach 2 : Binary search
+
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        ans=[-1,-1]
+        if len(nums)==0:
+            return ans
+        i=0
+        j=len(nums)-1
+
+        while i<j:
+            m = (i+j)//2
+            if nums[m]<target:
+                i=m+1
+            else:
+                j=m
+        if nums[i]!=target:
+            return ans
+        else:
+            ans[0]=i
+        j=len(nums)-1
+        while i<j:
+            m = (i+j)//2+1
+            if nums[m]>target:
+                j=m-1
+            else:
+                i=m
+        ans[1]=j
+        return ans
+    
+    
+    approach 3 , for loop traversal O(n)
+    
+    
