@@ -21,7 +21,7 @@ class Solution:
                         ph.append(th.pop())
 
                        
-#      in place
+#in place
 using DNF algo for 0 1 2
 
         low = 0
