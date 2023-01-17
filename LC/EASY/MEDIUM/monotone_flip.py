@@ -1,6 +1,14 @@
 https://leetcode.com/problems/flip-string-to-monotone-increasing/description/
     
-33. Search in Rotated Sorted Array
+926. Flip String to Monotone Increasing
+
+
+# both works 
+
+the idea is to start counting from first occurence of one because all the 0 s before that need not be changed they can be ignored.
+not use 2 variables each for the occurence of 1 and 0 and increase the counter ,
+with every iteration change the value of variiable containing 0s to the  min(v0,v1)
+
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
