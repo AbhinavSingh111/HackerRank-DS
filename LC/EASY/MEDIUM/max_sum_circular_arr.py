@@ -1,4 +1,5 @@
-
+https://leetcode.com/problems/maximum-sum-circular-subarray/description/
+918. Maximum Sum Circular Subarray
 
 # kaden's algo
 def kd(nums):
@@ -34,7 +35,41 @@ class Solution:
 
 
 
+v2:
+    
+    def kd(nums):
+    m = -99999
+    count=0
+    for i in range(len(nums)):
+        count+=nums[i]
+        if count>m:
+            m = count
+        if count<0:
+            count=0
+    return m 
 
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        if len(nums)==0:
+            return
+        mx = kd(nums)
+        if mx<0:
+            return mx
+        tt= sum(nums)
+        nums = [i*-1 for i in nums]
+        mn = kd(nums)*-1
+        return max(mx , tt-mn)
+
+
+    
+
+
+
+
+
+            
+
+            
 
             
 
