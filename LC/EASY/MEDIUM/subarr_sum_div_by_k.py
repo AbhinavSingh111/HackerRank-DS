@@ -1,3 +1,6 @@
+https://leetcode.com/problems/subarray-sums-divisible-by-k/description/
+974. Subarray Sums Divisible by K
+
 class Solution:
 
 
