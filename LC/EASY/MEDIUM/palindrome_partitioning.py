@@ -39,3 +39,25 @@ class Solution:
         backtrack(s, ans, candidates, 0)
         # 4. return ans
         return ans
+
+    
+    
+    
+    def palin(seq):
+    return seq==seq[::-1]
+class Solution:
+    def partition(self, s: str) -> List[List[str]]:
+        res = []
+        def backtrack(i , seq):
+            if i==len(s):
+                res.append(list(seq))
+                return
+            for j in range(i, len(s)):
+                if palin(s[i:j+1]):
+                    seq.append(s[i:j+1])
+                    backtrack(j+1,seq)
+                    seq.pop()
+
+        backtrack(0,[])
+        return res
+        
