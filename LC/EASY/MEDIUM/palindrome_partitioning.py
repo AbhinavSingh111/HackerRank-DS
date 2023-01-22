@@ -1,3 +1,7 @@
+https://leetcode.com/problems/palindrome-partitioning/description/
+131. Palindrome Partitioning
+
+
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         def is_palindrome(s):
