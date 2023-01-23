@@ -3,25 +3,6 @@ https://leetcode.com/problems/find-the-town-judge/description/
 
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        # if n<=1:
-        #     return 1
-        # possible_judge = {}
-        # for i in range(len(trust)):
-        #     if trust[i][1] in possible_judge:
-        #         possible_judge[trust[i][1]]+=[trust[i][0]]
-        #     else:
-        #         possible_judge[trust[i][1]]=[trust[i][0]]
-        # pj = 0
-        # for i in possible_judge:
-        #     temp = sorted(possible_judge[i])
-        #     if i not in temp and len (temp)==n-1:
-        #         pj = i
-        #     if pj  in temp:
-        #         return -1
-        # if pj!=0:
-        #     return pj
-        # else:
-        #     return -1
 
         # Count the number of people this guy is being trusted by.
         beingTrustedBy = defaultdict(int)
@@ -40,32 +21,43 @@ class Solution:
         
         # Didn't find a judge
         return -1
-            
+    
+ APPROACH 2
 
-
-
-
-
+class Solution:
+    def findJudge(self, n: int, trust: List[List[int]]) -> int:
+<!-- the base condition -->
+        if n<=1:
+            return 1
+<!-- a hash map.
+Keep person being trusted as the key and the person trusting as values. -->
+        possible_judge = {}
+        for i in range(len(trust)):
+            if trust[i][1] in possible_judge:
+                possible_judge[trust[i][1]]+=[trust[i][0]]
+            else:
+                possible_judge[trust[i][1]]=[trust[i][0]]
+        pj = 0
+<!-- list to store remaining values/persons -->
         l=[]
-        # for i in possible_judge:
-        #     l.append(possible_judge[i])
-        # if l:
-        #     t=l[0]
-        #     print(t)
-        # else:
-        #     return -1
-        # for i in l[1:]:
-        #     t = [val for val in t if val in i]
-        #     print(t)
+        for i in possible_judge:
+            temp = possible_judge[i]
+<!-- if the key(ie possible judge is not in the list of people who trusts him and the number of those people should be 1 less than total number of people and there needs to exist only one such person) -->
+            if i not in temp and len (temp)==n-1 and pj==0:
+                pj = i
+            else:
+<!-- if the above cond does not match add the people in a seperate list -->
+                l+=temp
 
+<!-- if we have found a possible judge and that possible judje is not in the list of people who trusts him then return pj -->
+        if pj!=0 and pj not in l:
+            return pj
+        else:
+            return -1
 
-        # print(t)
-        # if t:  
-        #     return t[0]
-        # else:
-        #     return -1
+        
+        
             
-        print(possible_judge)
 
         
         
