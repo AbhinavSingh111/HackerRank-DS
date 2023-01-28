@@ -32,3 +32,27 @@ class Solution:
                     q.append(neighbours)
         return ans
 
+    
+    
+    
+from typing import List
+from queue import Queue
+class Solution:
+    def bfsOfGraph(self, V: int, adj: List[List[int]]) -> List[int]:
+        # we can take dqueue from collections module too
+        # here in this ques every graph has root/start node 0 , so taking 0
+        q = [0]
+        ans = []
+        # while queue exist
+        while q: 
+            # pop the first value/similar to deque operation of queue
+            currNode = q.pop(0)
+            # if the value is not present in answer list that means it has not yet been traversed and hence can can be added to answer
+            # or traversed
+            if currNode not in ans:
+                ans.append(currNode)
+                # adding neighbours of the current node to queue from adjecency list
+                for neighbours in adj[currNode]:
+                    q.append(neighbours)
+        return ans
+
