@@ -41,3 +41,24 @@ class Solution:
                     temp.remove(neighbour)
         dfs(0,[0])
         return ans
+
+      
+      
+      
+      
+class Solution: 
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        ans=[]
+        curr=[0]
+        def dsa(curr,path):
+            if curr==len(graph)-1:
+                ans.append(path)
+                return
+            for neighbour in graph[curr]:
+                dsa(neighbour,path+[neighbour])
+        dsa(0,[0])
+        return ans
+
+
+
+        
