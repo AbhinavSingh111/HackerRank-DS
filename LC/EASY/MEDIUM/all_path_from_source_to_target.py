@@ -26,3 +26,18 @@ class Solution:
 
 
         
+class Solution:
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        ans = []
+        temp =[0]
+        def dfs(currNode , path):
+            if currNode == len(graph)-1:
+                ans.append(path)
+                return
+            for neighbour in graph[currNode]:
+                if neighbour not in temp:
+                    temp.append(neighbour)
+                    dfs(neighbour , path+[neighbour])
+                    temp.remove(neighbour)
+        dfs(0,[0])
+        return ans
