@@ -1,3 +1,5 @@
+https://leetcode.com/problems/course-schedule-ii/description/
+
 Approach 1: 
   
 Intuition
@@ -52,4 +54,47 @@ class Solution:
             # if our dfs returns false we return empty array
             if not dfs(i):return []
         # else we return our answer array
+        return st
+##############################################################################################################################################################
+      Approach 2:
+        
+        
+        Intuition
+This question is same as LC 210.
+LC 210 Course Schedule explanation
+we need to make slight changes in order to incorporate the order.
+
+Approach
+Everytime True is returned in our code , we know that a course can be visited , so we add it in our output list.
+
+Complexity
+Time complexity:
+O(v+e)
+Space complexity:
+Code
+class Solution:
+    def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        g={i:[] for i in range(numCourses)}
+        for i in prerequisites:
+            g[i[0]].append(i[1])
+        print(g)
+        vis=set()
+        st=[]
+        def dfs(curr):
+            if curr in vis:
+                return False
+            if g[curr]==[]:
+                if curr not in st:
+                    st.append(curr)
+                return True
+            vis.add(curr)
+            for neigh in g[curr]:
+                if not dfs(neigh):return False
+            vis.remove(curr)
+            g[curr]=[]
+            if curr not in st:
+                st.append(curr)
+            return True
+        for i in range(numCourses):
+            if not dfs(i):return []
         return st
